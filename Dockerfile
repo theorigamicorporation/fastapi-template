@@ -19,4 +19,4 @@ CMD ["$@"]
 
 FROM base AS api-server
 # Start the application
-CMD ["uvicorn", "main:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000", "--workers", "4", "--reload"] 
+CMD ["uvicorn", "main:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
