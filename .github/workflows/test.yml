@@ -21,7 +21,7 @@ on:
 jobs:
   lint:
     name: Lint with Ruff
-    runs-on: ubuntu-latest
+    runs-on: o4-k8s-runner-set-o4
     
     steps:
       - name: Checkout repository
@@ -49,7 +49,7 @@ jobs:
 
   typecheck:
     name: Type Check with ty
-    runs-on: ubuntu-latest
+    runs-on: o4-k8s-runner-set-o4
     
     steps:
       - name: Checkout repository
@@ -74,7 +74,7 @@ jobs:
 
   test:
     name: Run Tests
-    runs-on: ubuntu-latest
+    runs-on: o4-k8s-runner-set-o4
     needs: [lint]  # Only run tests if linting passes
     
     steps:

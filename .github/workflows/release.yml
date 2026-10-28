@@ -12,7 +12,7 @@ env:
 jobs:
   build-and-push:
     name: Build and Push Docker Image
-    runs-on: ubuntu-latest
+    runs-on: o4-k8s-runner-set-o4
 
     permissions:
       contents: read
