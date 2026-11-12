@@ -18,9 +18,14 @@ on:
       - 'tests/**'
       - '.github/workflows/test.yml'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   lint:
     name: Lint with Ruff
+    timeout-minutes: 10
     runs-on: o4-k8s-runner-set-o4
     
     steps:
@@ -49,6 +54,7 @@ jobs:
 
   typecheck:
     name: Type Check with ty
+    timeout-minutes: 10
     runs-on: o4-k8s-runner-set-o4
     
     steps:
@@ -74,6 +80,7 @@ jobs:
 
   test:
     name: Run Tests
+    timeout-minutes: 10
     runs-on: o4-k8s-runner-set-o4
     needs: [lint]  # Only run tests if linting passes
     
