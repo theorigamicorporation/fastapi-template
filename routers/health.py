@@ -4,7 +4,6 @@ from fastapi import APIRouter, status
 
 from schemas.health import HealthResponse
 
-
 router = APIRouter()
 
 
