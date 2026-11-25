@@ -26,7 +26,9 @@ class TestAppLifecycle:
 
     def test_app_routes_registered(self, app):
         """Test that all expected routes are registered."""
-        routes = [route.path for route in app.routes]
+        # Included routers are no longer flattened into app.routes, so read
+        # the registered paths from the OpenAPI schema.
+        routes = set(app.openapi()["paths"])
         
         # Check that our custom routes exist
         assert "/" in routes
